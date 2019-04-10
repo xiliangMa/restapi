@@ -8,7 +8,7 @@
 package routers
 
 import (
-	"restapi/controllers"
+	"github.com/xiliangMa/restapi/controllers"
 
 	"github.com/astaxie/beego"
 )

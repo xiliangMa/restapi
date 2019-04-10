@@ -1,11 +1,10 @@
 package main
 
 import (
-	_ "restapi/routers"
-
+	_ "github.com/xiliangMa/restapi/routers"
+	"github.com/xiliangMa/restapi/conf"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
-	"restapi/conf"
 	"fmt"
 	"github.com/astaxie/beego"
 )

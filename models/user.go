@@ -2,7 +2,7 @@ package models
 
 import (
 	"github.com/astaxie/beego/orm"
-	"restapi/utils"
+	"github.com/xiliangMa/restapi/utils"
 	"time"
 )
 

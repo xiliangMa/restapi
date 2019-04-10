@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"restapi/models"
+	"github.com/xiliangMa/restapi/models"
 	"github.com/astaxie/beego"
 	"encoding/json"
 )
