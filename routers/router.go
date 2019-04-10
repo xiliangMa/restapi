@@ -35,6 +35,11 @@ func init() {
 				&controllers.UserController{},
 			),
 		),
+		beego.NSNamespace("/promotion",
+			beego.NSInclude(
+				&controllers.PromotionController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }

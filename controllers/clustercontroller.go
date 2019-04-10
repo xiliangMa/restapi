@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"github.com/xiliangMa/restapi/models"
-	"github.com/astaxie/beego"
 	"encoding/json"
+	"github.com/astaxie/beego"
+	"github.com/xiliangMa/restapi/models"
 )
 
 // Cluster object api list
@@ -39,8 +39,6 @@ func (this *ClusterController) AddCluster() {
 	this.ServeJSON(false)
 
 }
-
-
 
 // @Title AddCluster
 // @Description dd Cluster

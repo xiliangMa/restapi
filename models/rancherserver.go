@@ -39,7 +39,6 @@ func GetRancherServerList(region string, page, number int) Result {
 	return ResultData
 }
 
-
 func AddRancherServer(rancherserver *RancherServer) Result {
 	o := orm.NewOrm()
 	o.Using("default")
@@ -54,7 +53,6 @@ func AddRancherServer(rancherserver *RancherServer) Result {
 	ResultData.Data = id
 	return ResultData
 }
-
 
 func DeleteRancherServer(id int) Result {
 	o := orm.NewOrm()

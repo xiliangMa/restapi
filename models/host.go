@@ -6,7 +6,6 @@ import (
 	"time"
 )
 
-
 type Host struct {
 	Id            int       `xorm:"not null pk autoincr INT(11)"`
 	Rid           string    `xorm:"comment('主机在rancher服务上的Id') VARCHAR(255)"`
@@ -70,7 +69,6 @@ func GetHostList(name, ip string, page, number int) Result {
 	return ResultData
 }
 
-
 func AddHost(host *Host) Result {
 	o := orm.NewOrm()
 	o.Using("default")
@@ -85,7 +83,6 @@ func AddHost(host *Host) Result {
 	ResultData.Data = id
 	return ResultData
 }
-
 
 func DeleteHost(id int) Result {
 	o := orm.NewOrm()

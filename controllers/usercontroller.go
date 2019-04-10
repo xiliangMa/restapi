@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"github.com/xiliangMa/restapi/models"
-	"github.com/astaxie/beego"
 	"encoding/json"
+	"github.com/astaxie/beego"
+	"github.com/xiliangMa/restapi/models"
 )
 
 // Users object api list
@@ -41,8 +41,6 @@ func (this *UserController) AddUser() {
 	this.ServeJSON(false)
 
 }
-
-
 
 // @Title AddUser
 // @Description dd User

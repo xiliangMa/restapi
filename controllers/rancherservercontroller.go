@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"github.com/xiliangMa/restapi/models"
-	"github.com/astaxie/beego"
 	"encoding/json"
+	"github.com/astaxie/beego"
+	"github.com/xiliangMa/restapi/models"
 )
 
 // RancherServers object api list

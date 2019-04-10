@@ -7,7 +7,7 @@ import (
 
 func init() {
 
-    beego.GlobalControllerRouter["restapi/controllers:ClusterController"] = append(beego.GlobalControllerRouter["restapi/controllers:ClusterController"],
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:ClusterController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:ClusterController"],
         beego.ControllerComments{
             Method: "ClusterList",
             Router: `/`,
@@ -16,7 +16,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["restapi/controllers:ClusterController"] = append(beego.GlobalControllerRouter["restapi/controllers:ClusterController"],
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:ClusterController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:ClusterController"],
         beego.ControllerComments{
             Method: "DeleteCluster",
             Router: `/:id`,
@@ -25,7 +25,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["restapi/controllers:ClusterController"] = append(beego.GlobalControllerRouter["restapi/controllers:ClusterController"],
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:ClusterController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:ClusterController"],
         beego.ControllerComments{
             Method: "AddCluster",
             Router: `/addCluster`,
@@ -34,7 +34,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["restapi/controllers:HostController"] = append(beego.GlobalControllerRouter["restapi/controllers:HostController"],
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:HostController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:HostController"],
         beego.ControllerComments{
             Method: "HostList",
             Router: `/`,
@@ -43,7 +43,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["restapi/controllers:HostController"] = append(beego.GlobalControllerRouter["restapi/controllers:HostController"],
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:HostController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:HostController"],
         beego.ControllerComments{
             Method: "DeleteHost",
             Router: `/:id`,
@@ -52,7 +52,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["restapi/controllers:HostController"] = append(beego.GlobalControllerRouter["restapi/controllers:HostController"],
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:HostController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:HostController"],
         beego.ControllerComments{
             Method: "AddHost",
             Router: `/addhost`,
@@ -61,7 +61,34 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["restapi/controllers:RancherServerController"] = append(beego.GlobalControllerRouter["restapi/controllers:RancherServerController"],
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:PromotionController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:PromotionController"],
+        beego.ControllerComments{
+            Method: "PromotionList",
+            Router: `/`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:PromotionController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:PromotionController"],
+        beego.ControllerComments{
+            Method: "DeletePromotion",
+            Router: `/:id`,
+            AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:PromotionController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:PromotionController"],
+        beego.ControllerComments{
+            Method: "AddPromotion",
+            Router: `/addPromotion`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:RancherServerController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:RancherServerController"],
         beego.ControllerComments{
             Method: "RancherServerList",
             Router: `/`,
@@ -70,7 +97,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["restapi/controllers:RancherServerController"] = append(beego.GlobalControllerRouter["restapi/controllers:RancherServerController"],
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:RancherServerController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:RancherServerController"],
         beego.ControllerComments{
             Method: "DeleteRancherServer",
             Router: `/:id`,
@@ -79,7 +106,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["restapi/controllers:RancherServerController"] = append(beego.GlobalControllerRouter["restapi/controllers:RancherServerController"],
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:RancherServerController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:RancherServerController"],
         beego.ControllerComments{
             Method: "AddRancherServer",
             Router: `/addRancherServer`,
@@ -88,7 +115,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["restapi/controllers:UserController"] = append(beego.GlobalControllerRouter["restapi/controllers:UserController"],
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:UserController"],
         beego.ControllerComments{
             Method: "UserList",
             Router: `/`,
@@ -97,7 +124,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["restapi/controllers:UserController"] = append(beego.GlobalControllerRouter["restapi/controllers:UserController"],
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:UserController"],
         beego.ControllerComments{
             Method: "DeleteUser",
             Router: `/:id`,
@@ -106,7 +133,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["restapi/controllers:UserController"] = append(beego.GlobalControllerRouter["restapi/controllers:UserController"],
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:UserController"],
         beego.ControllerComments{
             Method: "AddUser",
             Router: `/addUser`,

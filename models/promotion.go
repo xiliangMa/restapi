@@ -17,17 +17,16 @@ type Promotion struct {
 	CreateTime time.Time `xorm:"DATETIME"`
 }
 
-
 func init() {
 	orm.RegisterModel(new(Promotion))
 }
 
-func GetPromotionList(name, ip string, page, number int) Result {
+func GetPromotionList(name string, page, number int) Result {
 	o := orm.NewOrm()
 	o.Using("default")
 	var PromotionList []*Promotion
 	var ResultData Result
-	_, err := o.QueryTable("Promotion").Filter("name__icontains", name).Filter("Promotion_ip__icontains", ip).Limit(number, page).All(&PromotionList)
+	_, err := o.QueryTable("promotion").Filter("name__icontains", name).Limit(number, page).All(&PromotionList)
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.GetPromotionListErr
@@ -38,7 +37,6 @@ func GetPromotionList(name, ip string, page, number int) Result {
 	ResultData.Data = PromotionList
 	return ResultData
 }
-
 
 func AddPromotion(Promotion *Promotion) Result {
 	o := orm.NewOrm()
@@ -54,7 +52,6 @@ func AddPromotion(Promotion *Promotion) Result {
 	ResultData.Data = id
 	return ResultData
 }
-
 
 func DeletePromotion(id int) Result {
 	o := orm.NewOrm()

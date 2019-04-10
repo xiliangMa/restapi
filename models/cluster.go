@@ -46,7 +46,6 @@ type Cluster struct {
 	SyncTime      time.Time `xorm:"comment('同步时间') DATETIME"`
 }
 
-
 func init() {
 	orm.RegisterModel(new(Cluster))
 }
@@ -68,7 +67,6 @@ func GetClusterList(name string, page, number int) Result {
 	return ResultData
 }
 
-
 func AddCluster(cluster *Cluster) Result {
 	o := orm.NewOrm()
 	o.Using("default")
@@ -83,7 +81,6 @@ func AddCluster(cluster *Cluster) Result {
 	ResultData.Data = id
 	return ResultData
 }
-
 
 func DeleteCluster(id int) Result {
 	o := orm.NewOrm()

@@ -43,7 +43,6 @@ func GetUserList(mobile, email string, page, number int) Result {
 	return ResultData
 }
 
-
 func AddUser(User *User) Result {
 	o := orm.NewOrm()
 	o.Using("default")
@@ -58,7 +57,6 @@ func AddUser(User *User) Result {
 	ResultData.Data = id
 	return ResultData
 }
-
 
 func DeleteUser(id int) Result {
 	o := orm.NewOrm()

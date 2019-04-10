@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/bitly/go-simplejson"
 	"github.com/Jeffail/gabs"
+	"github.com/bitly/go-simplejson"
 )
 
 var (
@@ -36,7 +36,6 @@ func CreateCluster() {
 	}
 }
 
-
 func GetClusterRegistrationToken() {
 	params := ""
 	url := SetRequesterUrl("https://47.105.151.140/v3/clusterregistrationtokens?clusterId=c-jqkgr")
@@ -44,21 +43,19 @@ func GetClusterRegistrationToken() {
 	defer res.Body.Close()
 
 	body, err := ioutil.ReadAll(res.Body)
-	data,  _ := simplejson.NewJson(body)
+	data, _ := simplejson.NewJson(body)
 	rows, _ := data.Get("data").Array()
-
 
 	if err != nil {
 		fmt.Println("测试结果：========================== 获取 集群注册脚本 失败：", err.Error())
 	} else {
 		for _, row := range rows {
-			if nodecommand, ok := row.(map[string] interface{}); ok {
+			if nodecommand, ok := row.(map[string]interface{}); ok {
 				fmt.Println("测试结果：========================== 获取 集群注册脚本 成功: ", nodecommand["nodeCommand"])
 			}
 		}
 	}
 }
-
 
 func GetClusterRegistrationToken1() {
 	params := ""
@@ -70,11 +67,10 @@ func GetClusterRegistrationToken1() {
 	if err != nil {
 
 	}
-	jsonParse,_:=gabs.ParseJSON(body)
+	jsonParse, _ := gabs.ParseJSON(body)
 	fmt.Println(jsonParse.Path("data").Path("nodeCommand"))
 
 }
-
 
 func CreateProject() {
 	params := `{
@@ -121,11 +117,9 @@ func CreateNameSpace() {
 	}
 }
 
-
 func main() {
 	//CreateCluster()
 	GetClusterRegistrationToken1()
 	//CreateProject()
 	//CreateNameSpace()
 }
-
