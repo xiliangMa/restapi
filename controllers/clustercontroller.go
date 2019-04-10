@@ -15,7 +15,7 @@ type ClusterController struct {
 // @Description get Clusters
 // @Param name query string false "Cluster name"
 // @Param ip query string false "Cluster ip"
-// @Param page query int 1 false "page"
+// @Param page query int 0 false "page"
 // @Param number query int 20 false "page"
 // @Success 200 {object} models.Result
 // @router / [post]

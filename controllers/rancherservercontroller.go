@@ -14,7 +14,7 @@ type RancherServerController struct {
 // @Title GetRancherServer
 // @Description get RancherServers
 // @Param region query string false "RancherServer name"
-// @Param page query int 1 false "page"
+// @Param page query int 0 false "page"
 // @Param number query int 20 false "page"
 // @Success 200 {object} models.Result
 // @router / [post]

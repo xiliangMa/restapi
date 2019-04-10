@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/xiliangMa/restapi/models"
 )
@@ -14,7 +15,7 @@ type PromotionController struct {
 // @Title GetPromotion
 // @Description get Promotions
 // @Param name query string false "Promotion name"
-// @Param page query int 1 false "page"
+// @Param page query int 0 false "page"
 // @Param number query int 20 false "page"
 // @Success 200 {object} models.Result
 // @router / [post]
@@ -22,6 +23,8 @@ func (this *PromotionController) PromotionList() {
 	name := this.GetString("name")
 	number, _ := this.GetInt("number")
 	page, _ := this.GetInt("page")
+
+	fmt.Printf("======", page, number)
 	this.Data["json"] = models.GetPromotionList(name, page, number)
 	this.ServeJSON(false)
 }

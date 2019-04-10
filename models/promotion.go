@@ -26,7 +26,7 @@ func GetPromotionList(name string, page, number int) Result {
 	o.Using("default")
 	var PromotionList []*Promotion
 	var ResultData Result
-	_, err := o.QueryTable("promotion").Filter("name__icontains", name).Limit(number, page).All(&PromotionList)
+	_, err := o.QueryTable("promotion").Filter("name__icontains", name).Limit(number, 0).All(&PromotionList)
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.GetPromotionListErr
