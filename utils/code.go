@@ -15,4 +15,7 @@ var (
 	GetUserListErr = 11
 	AddUserErr = 12
 	DeleteUserErr = 13
+	GetPromotionListErr = 14
+	AddPromotionErr = 15
+	DeletePromotionErr = 16
 )
