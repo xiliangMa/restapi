@@ -34,7 +34,7 @@ func GetRancherServerList(region string, page, number int) Result {
 		return ResultData
 	}
 
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	ResultData.Data = RancherServerList
 	return ResultData
 }
@@ -49,7 +49,7 @@ func AddRancherServer(rancherserver *RancherServer) Result {
 		ResultData.Code = utils.AddRancherServerErr
 		return ResultData
 	}
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	ResultData.Data = id
 	return ResultData
 }

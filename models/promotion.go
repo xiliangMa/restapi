@@ -48,7 +48,7 @@ func AddPromotion(Promotion *Promotion) Result {
 		ResultData.Code = utils.AddPromotionErr
 		return ResultData
 	}
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	ResultData.Data = id
 	return ResultData
 }
@@ -63,6 +63,6 @@ func DeletePromotion(id int) Result {
 		ResultData.Code = utils.DeletePromotionErr
 		return ResultData
 	}
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	return ResultData
 }

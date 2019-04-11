@@ -7,6 +7,24 @@ import (
 
 func init() {
 
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:AuthController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:AuthController"],
+        beego.ControllerComments{
+            Method: "Authorize",
+            Router: `/authorize`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:AuthController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:AuthController"],
+        beego.ControllerComments{
+            Method: "Sigin",
+            Router: `/sigin`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:ClusterController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:ClusterController"],
         beego.ControllerComments{
             Method: "ClusterList",

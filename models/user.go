@@ -38,7 +38,7 @@ func GetUserList(mobile, email string, page, number int) Result {
 		return ResultData
 	}
 
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	ResultData.Data = UserList
 	return ResultData
 }
@@ -53,7 +53,7 @@ func AddUser(User *User) Result {
 		ResultData.Code = utils.AddUserErr
 		return ResultData
 	}
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	ResultData.Data = id
 	return ResultData
 }
@@ -68,6 +68,6 @@ func DeleteUser(id int) Result {
 		ResultData.Code = utils.DeleteUserErr
 		return ResultData
 	}
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	return ResultData
 }

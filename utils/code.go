@@ -1,7 +1,7 @@
 package utils
 
 var (
-	Success                 = 0
+	Success                 = 200
 	Fail                    = 1
 	GetHostListErr          = 2
 	AddHostErr              = 3
@@ -18,4 +18,6 @@ var (
 	GetPromotionListErr     = 14
 	AddPromotionErr         = 15
 	DeletePromotionErr      = 16
+	SiginErr                = 17
+	loginErr                = 18
 )

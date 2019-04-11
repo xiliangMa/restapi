@@ -39,8 +39,6 @@ func initDD() {
 	//orm.RegisterDataBase("default", "mysql", "root:abc123@tcp(127.0.0.1:3306)/uranus_local?charset=utf8")
 }
 
-
-
 func main() {
 	initDD()
 	if beego.BConfig.RunMode == "dev" {

@@ -62,7 +62,7 @@ func GetClusterList(name string, page, number int) Result {
 		return ResultData
 	}
 
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	ResultData.Data = ClusterList
 	return ResultData
 }
@@ -77,7 +77,7 @@ func AddCluster(cluster *Cluster) Result {
 		ResultData.Code = utils.AddClusterErr
 		return ResultData
 	}
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	ResultData.Data = id
 	return ResultData
 }
@@ -92,6 +92,6 @@ func DeleteCluster(id int) Result {
 		ResultData.Code = utils.DeleteClusterErr
 		return ResultData
 	}
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	return ResultData
 }

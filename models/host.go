@@ -64,7 +64,7 @@ func GetHostList(name, ip string, page, number int) Result {
 		return ResultData
 	}
 
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	ResultData.Data = HostList
 	return ResultData
 }
@@ -79,7 +79,7 @@ func AddHost(host *Host) Result {
 		ResultData.Code = utils.AddHostErr
 		return ResultData
 	}
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	ResultData.Data = id
 	return ResultData
 }
@@ -94,6 +94,6 @@ func DeleteHost(id int) Result {
 		ResultData.Code = utils.DeleteHostErr
 		return ResultData
 	}
-	ResultData.Code = 200
+	ResultData.Code = utils.Success
 	return ResultData
 }
