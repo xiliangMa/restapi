@@ -30,7 +30,7 @@ func CheckToken(token string) (string, int) {
 		return secret, nil
 	})
 	if err != nil {
-		return err.Error(), loginErr
+		return err.Error(), AuthorizeErr
 	}
 	return "", Success
 }

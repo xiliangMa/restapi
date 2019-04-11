@@ -19,5 +19,5 @@ var (
 	AddPromotionErr         = 15
 	DeletePromotionErr      = 16
 	SiginErr                = 17
-	loginErr                = 18
+	AuthorizeErr            = 18
 )

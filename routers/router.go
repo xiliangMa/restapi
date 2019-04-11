@@ -8,7 +8,9 @@
 package routers
 
 import (
+	"github.com/astaxie/beego/context"
 	"github.com/xiliangMa/restapi/controllers"
+	"github.com/xiliangMa/restapi/utils"
 
 	"github.com/astaxie/beego"
 )
@@ -46,5 +48,13 @@ func init() {
 			),
 		),
 	)
+
+	var isLogin = func(ctx *context.Context) {
+		_, code := utils.CheckToken(ctx.Input.Header("token"))
+		if code != 200 {
+			ctx.Redirect(401, "/login")
+		}
+	}
+	beego.InsertFilter(`/v1/hosts/*` , beego.BeforeRouter, isLogin)
 	beego.AddNamespace(ns)
 }

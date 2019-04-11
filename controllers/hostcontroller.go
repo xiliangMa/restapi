@@ -17,6 +17,7 @@ type HostController struct {
 // @Param ip query string false "host ip"
 // @Param page query int 0 false "page"
 // @Param number query int 20 false "page"
+// @Param token header string "" true
 // @Success 200 {object} models.Result
 // @router / [post]
 func (this *HostController) HostList() {
