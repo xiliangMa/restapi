@@ -57,6 +57,5 @@ func init() {
 	}
 	beego.InsertFilter("/v1/hosts/", beego.BeforeRouter, isLogin)
 
-
 	beego.AddNamespace(ns)
 }
