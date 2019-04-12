@@ -52,9 +52,11 @@ func init() {
 	var isLogin = func(ctx *context.Context) {
 		_, code := utils.CheckToken(ctx.Input.Header("token"))
 		if code != 200 {
-			ctx.Redirect(401, "/login")
+			ctx.Redirect(401, "/swagger")
 		}
 	}
-	beego.InsertFilter(`/v1/hosts/*` , beego.BeforeRouter, isLogin)
+	beego.InsertFilter("/v1/hosts/", beego.BeforeRouter, isLogin)
+
+
 	beego.AddNamespace(ns)
 }

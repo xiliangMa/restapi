@@ -10,7 +10,6 @@ type AuthController struct {
 	beego.Controller
 }
 
-
 // @Title sigin
 // @Description get auth
 // @Param name query string true "user name"
@@ -51,4 +50,3 @@ func (this *AuthController) Authorize() {
 	this.Data["json"] = ResultData
 	this.ServeJSON(false)
 }
-
