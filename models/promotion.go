@@ -1,6 +1,7 @@
 package models
 
 import (
+	"github.com/astaxie/beego/logs"
 	"github.com/astaxie/beego/orm"
 	"github.com/xiliangMa/restapi/utils"
 	"time"
@@ -30,6 +31,7 @@ func GetPromotionList(name string, page, number int) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.GetPromotionListErr
+		logs.Error("GetPromotionList failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
 		return ResultData
 	}
 
@@ -46,6 +48,7 @@ func AddPromotion(Promotion *Promotion) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.AddPromotionErr
+		logs.Error("AddPromotion failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
 		return ResultData
 	}
 	ResultData.Code = utils.Success
@@ -61,6 +64,7 @@ func DeletePromotion(id int) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.DeletePromotionErr
+		logs.Error("DeletePromotion failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
 		return ResultData
 	}
 	ResultData.Code = utils.Success

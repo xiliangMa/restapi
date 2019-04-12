@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 	"github.com/xiliangMa/restapi/models"
 	"github.com/xiliangMa/restapi/utils"
 )
@@ -44,6 +45,7 @@ func (this *AuthController) Authorize() {
 	ResultData.Code = code
 	if code != utils.Success {
 		ResultData.Message = result
+		logs.Error("Authorize failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
 	} else {
 		ResultData.Data = result
 	}
