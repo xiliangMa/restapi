@@ -38,7 +38,7 @@ func init() {
 				&controllers.UserController{},
 			),
 		),
-		beego.NSNamespace("/promotion",
+		beego.NSNamespace("/promotions",
 			beego.NSInclude(
 				&controllers.PromotionController{},
 			),
@@ -56,7 +56,12 @@ func init() {
 			ctx.Redirect(401, "/swagger")
 		}
 	}
-	beego.InsertFilter("/v1/hosts/", beego.BeforeRouter, isLogin)
+	beego.InsertFilter("/v1/hosts/*", beego.BeforeRouter, isLogin)
+	beego.InsertFilter("/v1/clusters/*", beego.BeforeRouter, isLogin)
+	beego.InsertFilter("/v1/rancherservers/", beego.BeforeRouter, isLogin)
+	beego.InsertFilter("/v1/promotions/*", beego.BeforeRouter, isLogin)
+	beego.InsertFilter("/v1/users/*", beego.BeforeRouter, isLogin)
+
 
 
 
