@@ -13,6 +13,7 @@ type UserController struct {
 
 // @Title GetUser
 // @Description get Users
+// @Param token header string true "Auth token"
 // @Param mobile query string false "User mobile"
 // @Param email query string false "User email"
 // @Param page query int 0 false "page"
@@ -30,7 +31,8 @@ func (this *UserController) UserList() {
 }
 
 // @Title AddUser
-// @Description dd User
+// @Description Add User
+// @Param token header string true "Auth token"
 // @Param User body models.User true "User object"
 // @Success 200 {object} models.Result
 // @router /addUser [post]
@@ -42,8 +44,9 @@ func (this *UserController) AddUser() {
 
 }
 
-// @Title AddUser
-// @Description dd User
+// @Title DelUser
+// @Description Delete User
+// @Param token header string true "Auth token"
 // @Param id path int true "User id"
 // @Success 200 {object} models.Result
 // @router /:id [delete]

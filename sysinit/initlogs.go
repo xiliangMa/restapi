@@ -45,7 +45,7 @@ func InitLogs() {
 		level:    level,
 	}
 
-	jsonbyte, _ :=  json.MarshalIndent(logConfig, "", "")
+	jsonbyte, _ := json.MarshalIndent(logConfig, "", "")
 	prodLogs = logs.NewLogger(10000)
 
 	prodLogs.SetLogger(logs.AdapterMultiFile, string(jsonbyte))

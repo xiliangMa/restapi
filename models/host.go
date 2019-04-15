@@ -62,7 +62,7 @@ func GetHostList(name, ip string, page, number int) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.GetHostListErr
-		logs.Error("GetHostList failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("GetHostList failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 		return ResultData
 	}
 
@@ -79,7 +79,7 @@ func AddHost(host *Host) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.AddHostErr
-		logs.Error("AddHost failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("AddHost failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 		return ResultData
 	}
 	ResultData.Code = utils.Success
@@ -95,7 +95,7 @@ func DeleteHost(id int) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.DeleteHostErr
-		logs.Error("DeleteHost failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("DeleteHost failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 		return ResultData
 	}
 	ResultData.Code = utils.Success

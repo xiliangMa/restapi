@@ -12,12 +12,12 @@ type HostController struct {
 }
 
 // @Title GetHost
-// @Description get Hosts
+// @Description Get Hosts
+// @Param token header string true "Auth token"
 // @Param name query string false "host name"
 // @Param ip query string false "host ip"
 // @Param page query int 0 false "page"
 // @Param number query int 20 false "page"
-// @Param token header string "" true
 // @Success 200 {object} models.Result
 // @router / [post]
 func (this *HostController) HostList() {
@@ -31,7 +31,8 @@ func (this *HostController) HostList() {
 }
 
 // @Title AddHost
-// @Description dd Host
+// @Description Add Host
+// @Param token header string true "Auth token"
 // @Param Host body models.Host true "host object"
 // @Success 200 {object} models.Result
 // @router /addhost [post]
@@ -43,8 +44,9 @@ func (this *HostController) AddHost() {
 
 }
 
-// @Title AddHost
-// @Description dd Host
+// @Title DelHost
+// @Description Delete Host
+// @Param token header string true "Auth token"
 // @Param id path int true "host id"
 // @Success 200 {object} models.Result
 // @router /:id [delete]

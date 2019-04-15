@@ -60,7 +60,7 @@ func GetClusterList(name string, page, number int) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.GetClusterListErr
-		logs.Error("GetClusterList failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("GetClusterList failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 		return ResultData
 	}
 
@@ -77,7 +77,7 @@ func AddCluster(cluster *Cluster) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.AddClusterErr
-		logs.Error("AddCluster failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("AddCluster failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 		return ResultData
 	}
 	ResultData.Code = utils.Success
@@ -93,7 +93,7 @@ func DeleteCluster(id int) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.DeleteClusterErr
-		logs.Error("DeleteCluster failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("DeleteCluster failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 		return ResultData
 	}
 	ResultData.Code = utils.Success

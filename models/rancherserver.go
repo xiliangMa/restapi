@@ -32,7 +32,7 @@ func GetRancherServerList(region string, page, number int) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.GetRancherServerListErr
-		logs.Error("GetRancherServerList failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("GetRancherServerList failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 		return ResultData
 	}
 
@@ -49,7 +49,7 @@ func AddRancherServer(rancherserver *RancherServer) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.AddRancherServerErr
-		logs.Error("AddRancherServer failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("AddRancherServer failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 		return ResultData
 	}
 	ResultData.Code = utils.Success
@@ -65,7 +65,7 @@ func DeleteRancherServer(id int) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.DeleteRancherServerErr
-		logs.Error("DeleteRancherServer failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("DeleteRancherServer failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 		return ResultData
 	}
 	ResultData.Code = 200

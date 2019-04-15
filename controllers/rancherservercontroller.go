@@ -13,6 +13,7 @@ type RancherServerController struct {
 
 // @Title GetRancherServer
 // @Description get RancherServers
+// @Param token header string true "Auth token"
 // @Param region query string false "RancherServer name"
 // @Param page query int 0 false "page"
 // @Param number query int 20 false "page"
@@ -28,7 +29,8 @@ func (this *RancherServerController) RancherServerList() {
 }
 
 // @Title AddRancherServer
-// @Description dd RancherServer
+// @Description Add RancherServer
+// @Param token header string true "Auth token"
 // @Param RancherServer body models.RancherServer true "RancherServer object"
 // @Success 200 {object} models.Result
 // @router /addRancherServer [post]
@@ -40,8 +42,9 @@ func (this *RancherServerController) AddRancherServer() {
 
 }
 
-// @Title AddRancherServer
-// @Description dd RancherServer
+// @Title DelRancherServer
+// @Description Delete RancherServer
+// @Param token header string true "Auth token"
 // @Param id path int true "RancherServer id"
 // @Success 200 {object} models.Result
 // @router /:id [delete]

@@ -34,6 +34,7 @@ func (this *AuthController) Sigin() {
 
 // @Title authorize
 // @Description authorize
+// @Param token header string true "Auth token"
 // @Param token query string true "token"
 // @Success 200 {object} models.Result
 // @router /authorize [post]
@@ -45,7 +46,7 @@ func (this *AuthController) Authorize() {
 	ResultData.Code = code
 	if code != utils.Success {
 		ResultData.Message = result
-		logs.Error("Authorize failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("Authorize failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 	} else {
 		ResultData.Data = result
 	}

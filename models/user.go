@@ -36,7 +36,7 @@ func GetUserList(mobile, email string, page, number int) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.GetUserListErr
-		logs.Error("GetUserList failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("GetUserList failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 		return ResultData
 	}
 
@@ -53,7 +53,7 @@ func AddUser(User *User) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.AddUserErr
-		logs.Error("AddUser failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("AddUser failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 		return ResultData
 	}
 	ResultData.Code = utils.Success
@@ -69,7 +69,7 @@ func DeleteUser(id int) Result {
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.DeleteUserErr
-		logs.Error("DeleteUser failed, code: %d, err: %s", ResultData.Code,  ResultData.Message )
+		logs.Error("DeleteUser failed, code: %d, err: %s", ResultData.Code, ResultData.Message)
 		return ResultData
 	}
 	ResultData.Code = utils.Success

@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/xiliangMa/restapi/models"
 )
@@ -14,6 +13,7 @@ type PromotionController struct {
 
 // @Title GetPromotion
 // @Description get Promotions
+// @Param token header string true "Auth token"
 // @Param name query string false "Promotion name"
 // @Param page query int 0 false "page"
 // @Param number query int 20 false "page"
@@ -24,13 +24,13 @@ func (this *PromotionController) PromotionList() {
 	number, _ := this.GetInt("number")
 	page, _ := this.GetInt("page")
 
-	fmt.Printf("======", page, number)
 	this.Data["json"] = models.GetPromotionList(name, page, number)
 	this.ServeJSON(false)
 }
 
 // @Title AddPromotion
 // @Description Add Promotion
+// @Param token header string true "Auth token"
 // @Param Promotion body models.Promotion true "Promotion object"
 // @Success 200 {object} models.Result
 // @router /addPromotion [post]
@@ -42,8 +42,9 @@ func (this *PromotionController) AddPromotion() {
 
 }
 
-// @Title AddPromotion
-// @Description dd Promotion
+// @Title DelPromotion
+// @Description Delete Promotion
+// @Param token header string true "Auth token"
 // @Param id path int true "Promotion id"
 // @Success 200 {object} models.Result
 // @router /:id [delete]

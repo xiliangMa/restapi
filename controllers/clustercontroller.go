@@ -13,6 +13,7 @@ type ClusterController struct {
 
 // @Title GetCluster
 // @Description get Clusters
+// @Param token header string true "Auth token"
 // @Param name query string false "Cluster name"
 // @Param ip query string false "Cluster ip"
 // @Param page query int 0 false "page"
@@ -29,6 +30,7 @@ func (this *ClusterController) ClusterList() {
 
 // @Title AddCluster
 // @Description Add Cluster
+// @Param token header string true "Auth token"
 // @Param Cluster body models.Cluster true "Cluster object"
 // @Success 200 {object} models.Result
 // @router /addCluster [post]
@@ -40,8 +42,9 @@ func (this *ClusterController) AddCluster() {
 
 }
 
-// @Title AddCluster
-// @Description dd Cluster
+// @Title DelCluster
+// @Description Delete Cluster
+// @Param token header string true "Auth token"
 // @Param id path int true "Cluster id"
 // @Success 200 {object} models.Result
 // @router /:id [delete]
