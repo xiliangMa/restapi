@@ -35,7 +35,6 @@ func (this *AuthController) Sigin() {
 // @Title authorize
 // @Description authorize
 // @Param token header string true "Auth token"
-// @Param token query string true "token"
 // @Success 200 {object} models.Result
 // @router /authorize [post]
 func (this *AuthController) Authorize() {
