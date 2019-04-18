@@ -8,12 +8,11 @@
 package routers
 
 import (
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
 	"github.com/astaxie/beego/plugins/cors"
 	"github.com/xiliangMa/restapi/controllers"
 	"github.com/xiliangMa/restapi/utils"
-
-	"github.com/astaxie/beego"
 )
 
 func init() {

@@ -40,8 +40,11 @@ func GetUserList(mobile, email string, page, number int) Result {
 		return ResultData
 	}
 
+	data := make(map[string]interface{})
+	data["items"] = UserList
+	data["total"] = len(UserList)
 	ResultData.Code = utils.Success
-	ResultData.Data = UserList
+	ResultData.Data = data
 	return ResultData
 }
 

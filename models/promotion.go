@@ -35,8 +35,11 @@ func GetPromotionList(name string, page, number int) Result {
 		return ResultData
 	}
 
+	data := make(map[string]interface{})
+	data["items"] = PromotionList
+	data["total"] = len(PromotionList)
 	ResultData.Code = 200
-	ResultData.Data = PromotionList
+	ResultData.Data = data
 	return ResultData
 }
 

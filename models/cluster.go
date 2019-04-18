@@ -64,8 +64,11 @@ func GetClusterList(name string, page, number int) Result {
 		return ResultData
 	}
 
+	data := make(map[string]interface{})
+	data["items"] = ClusterList
+	data["total"] = len(ClusterList)
 	ResultData.Code = utils.Success
-	ResultData.Data = ClusterList
+	ResultData.Data = &data
 	return ResultData
 }
 

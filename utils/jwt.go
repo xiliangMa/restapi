@@ -13,7 +13,7 @@ func GenToken(name, pwd string) (string, int) {
 	claims := &jwt.StandardClaims{
 		Id:        name,
 		NotBefore: int64(time.Now().Unix()),
-		ExpiresAt: int64(time.Now().Unix() + 1000),
+		ExpiresAt: int64(time.Now().Unix() + 1800000 * 6),
 		Issuer:    "Bitch",
 	}
 

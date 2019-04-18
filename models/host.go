@@ -66,8 +66,11 @@ func GetHostList(name, ip string, page, number int) Result {
 		return ResultData
 	}
 
+	data := make(map[string]interface{})
+	data["items"] = HostList
+	data["total"] = len(HostList)
 	ResultData.Code = utils.Success
-	ResultData.Data = HostList
+	ResultData.Data = data
 	return ResultData
 }
 

@@ -36,8 +36,11 @@ func GetRancherServerList(region string, page, number int) Result {
 		return ResultData
 	}
 
+	data := make(map[string]interface{})
+	data["items"] = RancherServerList
+	data["total"] = len(RancherServerList)
 	ResultData.Code = utils.Success
-	ResultData.Data = RancherServerList
+	ResultData.Data = data
 	return ResultData
 }
 
