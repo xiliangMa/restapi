@@ -23,8 +23,28 @@ type User struct {
 	UpdateTime     time.Time `xorm:"TIMESTAMP"`
 }
 
+type ElementAdmin struct {
+	Roles  []string `json:"roles"`
+	Avatar string   `json:"avatar"`
+	Name   string   `json:"name"`
+}
+
 func init() {
 	orm.RegisterModel(new(User))
+}
+
+func GetUserInfo(token string) Result {
+	claims, _ := utils.ParseToken(token, []byte("Hello World！This is jwt test demo!"))
+	name := utils.GetNameFromClaims("jti", claims)
+	var ResultData Result
+	userInfo := ElementAdmin{
+		Roles:  []string{"admin"},
+		Avatar: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+		Name:   name,
+	}
+	ResultData.Code = utils.Success
+	ResultData.Data = userInfo
+	return ResultData
 }
 
 func GetUserList(mobile, email string, page, number int) Result {

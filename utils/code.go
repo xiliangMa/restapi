@@ -20,4 +20,5 @@ var (
 	DeletePromotionErr      = 16
 	SiginErr                = 17
 	AuthorizeErr            = 18
+	GetUserInfoErr          = 19
 )

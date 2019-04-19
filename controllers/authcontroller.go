@@ -11,13 +11,13 @@ type AuthController struct {
 	beego.Controller
 }
 
-// @Title sigin
+// @Title Signin
 // @Description get auth
 // @Param name query string true "user name"
 // @Param pwd query string true "user pwd"
 // @Success 200 {object} models.Result
-// @router /sigin [post]
-func (this *AuthController) Sigin() {
+// @router /signin [post]
+func (this *AuthController) Signin() {
 	name := this.GetString("name")
 	pwd := this.GetString("pwd")
 	var ResultData models.Result

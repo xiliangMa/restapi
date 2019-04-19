@@ -11,6 +11,17 @@ type UserController struct {
 	beego.Controller
 }
 
+// @Title GetUserInfo
+// @Description get User Info
+// @Param token header string true "Auth token"
+// @Success 200 {object} models.Result
+// @router /info [get]
+func (this *UserController) UserInfo() {
+	token := this.Ctx.Input.Header("token")
+	this.Data["json"] = models.GetUserInfo(token)
+	this.ServeJSON(false)
+}
+
 // @Title GetUser
 // @Description get Users
 // @Param token header string true "Auth token"
