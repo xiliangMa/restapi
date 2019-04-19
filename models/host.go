@@ -53,12 +53,12 @@ func init() {
 	orm.RegisterModel(new(Host))
 }
 
-func GetHostList(name, ip string, page, number int) Result {
+func GetHostList(name, ip string, from, limit int) Result {
 	o := orm.NewOrm()
 	o.Using("default")
 	var HostList []*Host
 	var ResultData Result
-	_, err := o.QueryTable("host").Filter("name__icontains", name).Filter("host_ip__icontains", ip).Limit(number, page).All(&HostList)
+	_, err := o.QueryTable("host").Filter("name__icontains", name).Filter("host_ip__icontains", ip).Limit(limit, from).All(&HostList)
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.GetHostListErr
@@ -66,9 +66,10 @@ func GetHostList(name, ip string, page, number int) Result {
 		return ResultData
 	}
 
+	total, _ := o.QueryTable("host").Count()
 	data := make(map[string]interface{})
 	data["items"] = HostList
-	data["total"] = len(HostList)
+	data["total"] = total
 	ResultData.Code = utils.Success
 	ResultData.Data = data
 	return ResultData

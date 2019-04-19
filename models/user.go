@@ -47,12 +47,12 @@ func GetUserInfo(token string) Result {
 	return ResultData
 }
 
-func GetUserList(mobile, email string, page, number int) Result {
+func GetUserList(mobile, email string, from, limit int) Result {
 	o := orm.NewOrm()
 	o.Using("default")
 	var UserList []*User
 	var ResultData Result
-	_, err := o.QueryTable("user").Filter("mobile__icontains", mobile).Filter("email__icontains", email).Limit(number, page).All(&UserList)
+	_, err := o.QueryTable("user").Filter("mobile__icontains", mobile).Filter("email__icontains", email).Limit(limit, from).All(&UserList)
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.GetUserListErr
@@ -60,9 +60,10 @@ func GetUserList(mobile, email string, page, number int) Result {
 		return ResultData
 	}
 
+	total, _ := o.QueryTable("user").Count()
 	data := make(map[string]interface{})
 	data["items"] = UserList
-	data["total"] = len(UserList)
+	data["total"] = total
 	ResultData.Code = utils.Success
 	ResultData.Data = data
 	return ResultData

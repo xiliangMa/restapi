@@ -16,16 +16,16 @@ type HostController struct {
 // @Param token header string true "Auth token"
 // @Param name query string false "host name"
 // @Param ip query string false "host ip"
-// @Param page query int 0 false "page"
-// @Param number query int 20 false "page"
+// @Param from query int 0 false "from"
+// @Param limit query int 20 false "limit"
 // @Success 200 {object} models.Result
 // @router / [post]
 func (this *HostController) HostList() {
 	name := this.GetString("name")
 	ip := this.GetString("ip")
-	number, _ := this.GetInt("number")
-	page, _ := this.GetInt("page")
-	this.Data["json"] = models.GetHostList(name, ip, page, number)
+	limit, _ := this.GetInt("limit")
+	from, _ := this.GetInt("from")
+	this.Data["json"] = models.GetHostList(name, ip, from, limit)
 	this.ServeJSON(false)
 
 }

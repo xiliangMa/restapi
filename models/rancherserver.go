@@ -23,12 +23,12 @@ func init() {
 	orm.RegisterModel(new(RancherServer))
 }
 
-func GetRancherServerList(region string, page, number int) Result {
+func GetRancherServerList(region string, from, limit int) Result {
 	o := orm.NewOrm()
 	o.Using("default")
 	var RancherServerList []*RancherServer
 	var ResultData Result
-	_, err := o.QueryTable("rancher_server").Filter("region__icontains", region).Limit(number, page).All(&RancherServerList)
+	_, err := o.QueryTable("rancher_server").Filter("region__icontains", region).Limit(limit, from).All(&RancherServerList)
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.GetRancherServerListErr
@@ -36,9 +36,10 @@ func GetRancherServerList(region string, page, number int) Result {
 		return ResultData
 	}
 
+	total, _ := o.QueryTable("rancher_server").Count()
 	data := make(map[string]interface{})
 	data["items"] = RancherServerList
-	data["total"] = len(RancherServerList)
+	data["total"] = total
 	ResultData.Code = utils.Success
 	ResultData.Data = data
 	return ResultData

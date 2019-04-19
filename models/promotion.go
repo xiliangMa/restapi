@@ -22,12 +22,12 @@ func init() {
 	orm.RegisterModel(new(Promotion))
 }
 
-func GetPromotionList(name string, page, number int) Result {
+func GetPromotionList(name string, from, limit int) Result {
 	o := orm.NewOrm()
 	o.Using("default")
 	var PromotionList []*Promotion
 	var ResultData Result
-	_, err := o.QueryTable("promotion").Filter("name__icontains", name).Limit(number, 0).All(&PromotionList)
+	_, err := o.QueryTable("promotion").Filter("name__icontains", name).Limit(limit, from).All(&PromotionList)
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.GetPromotionListErr
@@ -35,9 +35,10 @@ func GetPromotionList(name string, page, number int) Result {
 		return ResultData
 	}
 
+	total, _ := o.QueryTable("promotion").Count()
 	data := make(map[string]interface{})
 	data["items"] = PromotionList
-	data["total"] = len(PromotionList)
+	data["total"] = total
 	ResultData.Code = 200
 	ResultData.Data = data
 	return ResultData

@@ -51,12 +51,13 @@ func init() {
 	orm.RegisterModel(new(Cluster))
 }
 
-func GetClusterList(name string, page, number int) Result {
+func GetClusterList(name string, from, limit int) Result {
 	o := orm.NewOrm()
 	o.Using("default")
 	var ClusterList []*Cluster
 	var ResultData Result
-	_, err := o.QueryTable("cluster").Filter("name__icontains", name).Limit(number, page).All(&ClusterList)
+
+	_, err := o.QueryTable("cluster").Filter("name__icontains", name).Limit(limit, from).All(&ClusterList)
 	if err != nil {
 		ResultData.Message = err.Error()
 		ResultData.Code = utils.GetClusterListErr
@@ -65,8 +66,9 @@ func GetClusterList(name string, page, number int) Result {
 	}
 
 	data := make(map[string]interface{})
+	total, _ := o.QueryTable("cluster").Count()
 	data["items"] = ClusterList
-	data["total"] = len(ClusterList)
+	data["total"] = total
 	ResultData.Code = utils.Success
 	ResultData.Data = &data
 	return ResultData

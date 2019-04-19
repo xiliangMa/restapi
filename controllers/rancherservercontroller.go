@@ -15,15 +15,15 @@ type RancherServerController struct {
 // @Description get RancherServers
 // @Param token header string true "Auth token"
 // @Param region query string false "RancherServer name"
-// @Param page query int 0 false "page"
-// @Param number query int 20 false "page"
+// @Param from query int 0 false "from"
+// @Param limit query int 20 false "limit"
 // @Success 200 {object} models.Result
 // @router / [post]
 func (this *RancherServerController) RancherServerList() {
 	region := this.GetString("region")
-	number, _ := this.GetInt("number")
-	page, _ := this.GetInt("page")
-	this.Data["json"] = models.GetRancherServerList(region, page, number)
+	limit, _ := this.GetInt("limit")
+	from, _ := this.GetInt("from")
+	this.Data["json"] = models.GetRancherServerList(region, from, limit)
 	this.ServeJSON(false)
 
 }
