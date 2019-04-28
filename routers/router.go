@@ -47,6 +47,21 @@ func init() {
 				&controllers.AuthController{},
 			),
 		),
+		beego.NSNamespace("/ordermaster",
+			beego.NSInclude(
+				&controllers.OrderMasterController{},
+			),
+		),
+		beego.NSNamespace("/orderrenewal",
+			beego.NSInclude(
+				&controllers.OrderRenewalController{},
+			),
+		),
+		beego.NSNamespace("/orderdetail",
+			beego.NSInclude(
+				&controllers.OrderDetailController{},
+			),
+		),
 	)
 
 	var isLogin = func(ctx *context.Context) {
@@ -63,6 +78,10 @@ func init() {
 	beego.InsertFilter("/v1/rancherservers/", beego.BeforeRouter, isLogin)
 	beego.InsertFilter("/v1/promotions/*", beego.BeforeRouter, isLogin)
 	beego.InsertFilter("/v1/users/*", beego.BeforeRouter, isLogin)
+	beego.InsertFilter("/v1/ordemaster/*", beego.BeforeRouter, isLogin)
+	beego.InsertFilter("/v1/orderrenewal/*", beego.BeforeRouter, isLogin)
+	beego.InsertFilter("/v1/orderdetail/*", beego.BeforeRouter, isLogin)
+
 
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
 		AllowAllOrigins:  true,

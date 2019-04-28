@@ -79,6 +79,87 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderDetailController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderDetailController"],
+        beego.ControllerComments{
+            Method: "OrderDetailList",
+            Router: `/`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderDetailController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderDetailController"],
+        beego.ControllerComments{
+            Method: "DeleteOrderDetail",
+            Router: `/:id`,
+            AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderDetailController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderDetailController"],
+        beego.ControllerComments{
+            Method: "AddOrderDetail",
+            Router: `/addOrderDetail`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderMasterController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderMasterController"],
+        beego.ControllerComments{
+            Method: "OrderMasterList",
+            Router: `/`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderMasterController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderMasterController"],
+        beego.ControllerComments{
+            Method: "DeleteOrderMaster",
+            Router: `/:id`,
+            AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderMasterController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderMasterController"],
+        beego.ControllerComments{
+            Method: "AddOrderMaster",
+            Router: `/addOrderMaster`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderRenewalController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderRenewalController"],
+        beego.ControllerComments{
+            Method: "OrderRenewalList",
+            Router: `/`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderRenewalController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderRenewalController"],
+        beego.ControllerComments{
+            Method: "DeleteOrderRenewal",
+            Router: `/:id`,
+            AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderRenewalController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:OrderRenewalController"],
+        beego.ControllerComments{
+            Method: "AddOrderRenewal",
+            Router: `/addOrderRenewal`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:PromotionController"] = append(beego.GlobalControllerRouter["github.com/xiliangMa/restapi/controllers:PromotionController"],
         beego.ControllerComments{
             Method: "PromotionList",
