@@ -1,0 +1,39 @@
+variables:
+  resitry: cloud.docker.com
+  image: xiliangma/restapi
+  tag: $CI_COMMIT_SHA
+  gopath: /go/src/github.com/xiliangMa
+
+stages:
+  - build
+  - publish
+
+go-build:
+  stage: build
+  image: golang:1.11
+  only:
+    - master
+  script:
+    - mkdir -p $gopath
+    - ln -s `pwd` $gopath/restapi
+    - cd $gopath/restapi
+    - go build -o bin/restapi
+  artifacts:
+    paths:
+      - bin
+
+buid-docker-image:
+  stage: publish
+  image: docker:latest
+  services:
+    - docker:dind
+  only:
+    - master
+  dependencies:
+    - go-build
+  script:
+    - docker login -u xiliangma -p maxiliang4115
+    - docker build -t $image:$tag .
+    - docker push $image:$tag
+    - docker run $image:$tag
+    - echo "build success $image:$tag"
