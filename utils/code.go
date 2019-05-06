@@ -21,13 +21,13 @@ var (
 	SiginErr                = 17
 	AuthorizeErr            = 18
 	GetUserInfoErr          = 19
-	GetOrderMasterListErr     = 20
-	AddOrderMasterErr         = 21
-	DeleteOrderMasterErr      = 22
-	GetOrderRenewalListErr     = 23
-	AddOrderRenewalErr         = 24
-	DeleteOrderRenewalErr      = 25
-	GetOrderDetailListErr     = 23
-	AddOrderDetailErr         = 24
-	DeleteOrderDetailErr      = 25
+	GetOrderMasterListErr   = 20
+	AddOrderMasterErr       = 21
+	DeleteOrderMasterErr    = 22
+	GetOrderRenewalListErr  = 23
+	AddOrderRenewalErr      = 24
+	DeleteOrderRenewalErr   = 25
+	GetOrderDetailListErr   = 23
+	AddOrderDetailErr       = 24
+	DeleteOrderDetailErr    = 25
 )
