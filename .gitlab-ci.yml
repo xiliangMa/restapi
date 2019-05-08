@@ -34,7 +34,7 @@ buid-docker-image:
   dependencies:
     - go-build
   script:
-    - docker login -u xiliangma -p maxiliang4115
+    - docker login -u user -p pwd
     - docker build -t $image:$tag .
     - docker push $image:$tag
     - echo "build success $image:$tag"
