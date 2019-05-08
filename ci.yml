@@ -21,6 +21,8 @@ go-build:
   artifacts:
     paths:
       - bin
+      - conf
+      - swagger
 
 buid-docker-image:
   stage: publish
@@ -35,5 +37,4 @@ buid-docker-image:
     - docker login -u xiliangma -p maxiliang4115
     - docker build -t $image:$tag .
     - docker push $image:$tag
-    - docker run $image:$tag
     - echo "build success $image:$tag"

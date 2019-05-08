@@ -1,0 +1,1726 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Backend Service API",
+        "description": "Backend Service API",
+        "version": "1.0.0",
+        "termsOfService": "http://beego.me/",
+        "contact": {
+            "email": "astaxie@gmail.com"
+        },
+        "license": {
+            "name": "MIT License",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "basePath": "/v1",
+    "paths": {
+        "/auth/authorize": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "authorize",
+                "operationId": "AuthController.authorize",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/signin": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "get auth",
+                "operationId": "AuthController.Signin",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "description": "user name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "pwd",
+                        "description": "user pwd",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/clusters/": {
+            "post": {
+                "tags": [
+                    "clusters"
+                ],
+                "description": "get Clusters",
+                "operationId": "ClusterController.GetCluster",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "description": "Cluster name",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "ip",
+                        "description": "Cluster ip",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "from",
+                        "description": "from",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "0"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "20"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/clusters/addCluster": {
+            "post": {
+                "tags": [
+                    "clusters"
+                ],
+                "description": "Add Cluster",
+                "operationId": "ClusterController.AddCluster",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Cluster",
+                        "description": "Cluster object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Cluster"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/clusters/{id}": {
+            "delete": {
+                "tags": [
+                    "clusters"
+                ],
+                "description": "Delete Cluster",
+                "operationId": "ClusterController.DelCluster",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Cluster id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/hosts/": {
+            "post": {
+                "tags": [
+                    "hosts"
+                ],
+                "description": "Get Hosts",
+                "operationId": "HostController.GetHost",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "description": "host name",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "ip",
+                        "description": "host ip",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "from",
+                        "description": "from",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "0"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "20"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/hosts/addhost": {
+            "post": {
+                "tags": [
+                    "hosts"
+                ],
+                "description": "Add Host",
+                "operationId": "HostController.AddHost",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Host",
+                        "description": "host object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Host"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/hosts/{id}": {
+            "delete": {
+                "tags": [
+                    "hosts"
+                ],
+                "description": "Delete Host",
+                "operationId": "HostController.DelHost",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "host id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/orderdetail/": {
+            "post": {
+                "tags": [
+                    "orderdetail"
+                ],
+                "description": "get OrderDetails",
+                "operationId": "OrderDetailController.GetOrderDetail",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "description": "OrderDetail name",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "from",
+                        "description": "from",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "0"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "20"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/orderdetail/addOrderDetail": {
+            "post": {
+                "tags": [
+                    "orderdetail"
+                ],
+                "description": "Add OrderDetail",
+                "operationId": "OrderDetailController.AddOrderDetail",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "OrderDetail",
+                        "description": "OrderDetail object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.OrderDetail"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/orderdetail/{id}": {
+            "delete": {
+                "tags": [
+                    "orderdetail"
+                ],
+                "description": "Delete OrderDetail",
+                "operationId": "OrderDetailController.DelOrderDetail",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "OrderDetail id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/ordermaster/": {
+            "post": {
+                "tags": [
+                    "ordermaster"
+                ],
+                "description": "get OrderMasters",
+                "operationId": "OrderMasterController.GetOrderMaster",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "description": "OrderMaster name",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "from",
+                        "description": "from",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "0"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "20"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/ordermaster/addOrderMaster": {
+            "post": {
+                "tags": [
+                    "ordermaster"
+                ],
+                "description": "Add OrderMaster",
+                "operationId": "OrderMasterController.AddOrderMaster",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "OrderMaster",
+                        "description": "OrderMaster object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.OrderMaster"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/ordermaster/{id}": {
+            "delete": {
+                "tags": [
+                    "ordermaster"
+                ],
+                "description": "Delete OrderMaster",
+                "operationId": "OrderMasterController.DelOrderMaster",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "OrderMaster id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/orderrenewal/": {
+            "post": {
+                "tags": [
+                    "orderrenewal"
+                ],
+                "description": "get OrderRenewals",
+                "operationId": "OrderRenewalController.GetOrderRenewal",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "description": "OrderRenewal name",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "from",
+                        "description": "from",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "0"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "20"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/orderrenewal/addOrderRenewal": {
+            "post": {
+                "tags": [
+                    "orderrenewal"
+                ],
+                "description": "Add OrderRenewal",
+                "operationId": "OrderRenewalController.AddOrderRenewal",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "OrderRenewal",
+                        "description": "OrderRenewal object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.OrderRenewal"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/orderrenewal/{id}": {
+            "delete": {
+                "tags": [
+                    "orderrenewal"
+                ],
+                "description": "Delete OrderRenewal",
+                "operationId": "OrderRenewalController.DelOrderRenewal",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "OrderRenewal id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/promotions/": {
+            "post": {
+                "tags": [
+                    "promotions"
+                ],
+                "description": "get Promotions",
+                "operationId": "PromotionController.GetPromotion",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "description": "Promotion name",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "from",
+                        "description": "from",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "0"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "20"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/promotions/addPromotion": {
+            "post": {
+                "tags": [
+                    "promotions"
+                ],
+                "description": "Add Promotion",
+                "operationId": "PromotionController.AddPromotion",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Promotion",
+                        "description": "Promotion object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Promotion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/promotions/{id}": {
+            "delete": {
+                "tags": [
+                    "promotions"
+                ],
+                "description": "Delete Promotion",
+                "operationId": "PromotionController.DelPromotion",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Promotion id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/rancherservers/": {
+            "post": {
+                "tags": [
+                    "rancherservers"
+                ],
+                "description": "get RancherServers",
+                "operationId": "RancherServerController.GetRancherServer",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "region",
+                        "description": "RancherServer name",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "from",
+                        "description": "from",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "0"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "20"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/rancherservers/addRancherServer": {
+            "post": {
+                "tags": [
+                    "rancherservers"
+                ],
+                "description": "Add RancherServer",
+                "operationId": "RancherServerController.AddRancherServer",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "RancherServer",
+                        "description": "RancherServer object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.RancherServer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/rancherservers/{id}": {
+            "delete": {
+                "tags": [
+                    "rancherservers"
+                ],
+                "description": "Delete RancherServer",
+                "operationId": "RancherServerController.DelRancherServer",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "RancherServer id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "description": "get Users",
+                "operationId": "UserController.GetUser",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "mobile",
+                        "description": "User mobile",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "email",
+                        "description": "User email",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "from",
+                        "description": "from",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "0"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit",
+                        "type": "integer",
+                        "format": "int64",
+                        "default": "20"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/addUser": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "description": "Add User",
+                "operationId": "UserController.AddUser",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "User",
+                        "description": "User object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/info": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "description": "get User Info",
+                "operationId": "UserController.GetUserInfo",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "delete": {
+                "tags": [
+                    "users"
+                ],
+                "description": "Delete User",
+                "operationId": "UserController.DelUser",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Auth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "User id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Result"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "22341.0xc00058ed80.false": {
+            "title": "false",
+            "type": "object"
+        },
+        "models.Cluster": {
+            "title": "Cluster",
+            "type": "object",
+            "properties": {
+                "BeginTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Capacity": {
+                    "type": "string"
+                },
+                "ClusterInfo": {
+                    "type": "string"
+                },
+                "Command": {
+                    "type": "string"
+                },
+                "CpuKernel": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "CpuKernelLock": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "CpuKernelUsed": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "CreateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Deleted": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Disk": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "DiskLock": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "DiskUsed": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "EndTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Limits": {
+                    "type": "string"
+                },
+                "Mem": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "MemLock": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "MemUsed": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Network": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "NetworkLock": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "NetworkType": {
+                    "type": "string"
+                },
+                "NetworkUsed": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "Online": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "OwnerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Pods": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PodsUsed": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Profit": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "RancherId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "RentPrice": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "Requested": {
+                    "type": "string"
+                },
+                "Rid": {
+                    "type": "string"
+                },
+                "State": {
+                    "type": "string"
+                },
+                "SyncTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "TotalCompute": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "UpdateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "UsedCompute": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.Host": {
+            "title": "Host",
+            "type": "object",
+            "properties": {
+                "BeginTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "CallbackUrl": {
+                    "type": "string"
+                },
+                "ClusterId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Command": {
+                    "type": "string"
+                },
+                "ControlPlane": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CpuFrequency": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "CpuKernel": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "CpuKernelLock": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "CpuKernelUsed": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "CreateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Deleted": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Disk": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "DiskLock": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "DiskUsed": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "EndTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Etcd": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Host": {
+                    "type": "string"
+                },
+                "HostInfo": {
+                    "type": "string"
+                },
+                "HostIp": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Mem": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "MemLock": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "MemUsed": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Network": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "NetworkLock": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "NetworkUsed": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "OwnerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Pods": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PodsUsed": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PublicAddress": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "RancherId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Rid": {
+                    "type": "string"
+                },
+                "State": {
+                    "type": "string"
+                },
+                "SyncTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "TotalCompute": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "UpdateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "UsedCompute": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "Worker": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.OrderDetail": {
+            "title": "OrderDetail",
+            "type": "object",
+            "properties": {
+                "BeginTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "DeployTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "EndTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "OrderNo": {
+                    "type": "string"
+                },
+                "ProdAmount": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ProdId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ProdInfo": {
+                    "type": "string"
+                },
+                "ProdName": {
+                    "type": "string"
+                },
+                "ProdPrice": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ProdType": {
+                    "type": "string"
+                },
+                "RentDays": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Rid": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.OrderMaster": {
+            "title": "OrderMaster",
+            "type": "object",
+            "properties": {
+                "BuyerAccount": {
+                    "type": "string"
+                },
+                "BuyerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "BuyerName": {
+                    "type": "string"
+                },
+                "CreateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "OrderAmount": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "OrderHash": {
+                    "type": "string"
+                },
+                "OrderNo": {
+                    "type": "string"
+                },
+                "OrderStatus": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "OriginalOrder": {
+                    "type": "string"
+                },
+                "PaySuccessTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Poundage": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ProdType": {
+                    "type": "string"
+                },
+                "SellerAccount": {
+                    "type": "string"
+                },
+                "SellerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "SellerName": {
+                    "type": "string"
+                },
+                "UpdateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                }
+            }
+        },
+        "models.OrderRenewal": {
+            "title": "OrderRenewal",
+            "type": "object",
+            "properties": {
+                "BuyerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CreateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "OrderDetailId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "OrderHash": {
+                    "type": "string"
+                },
+                "OrderNo": {
+                    "type": "string"
+                },
+                "PaySuccessTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Poundage": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ProdAmount": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ProdId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ProdName": {
+                    "type": "string"
+                },
+                "ProdPrice": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ProdStatus": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ProdType": {
+                    "type": "string"
+                },
+                "RenewalNo": {
+                    "type": "string"
+                },
+                "RentDays": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "SellerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "UpdateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                }
+            }
+        },
+        "models.Promotion": {
+            "title": "Promotion",
+            "type": "object",
+            "properties": {
+                "BeginDate": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Content": {
+                    "type": "string"
+                },
+                "CreateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "EndDate": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "UpdateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                }
+            }
+        },
+        "models.RancherServer": {
+            "title": "RancherServer",
+            "type": "object",
+            "properties": {
+                "AccessKey": {
+                    "type": "string"
+                },
+                "CreateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "NetworkType": {
+                    "type": "string"
+                },
+                "Region": {
+                    "type": "string"
+                },
+                "RegionEnUs": {
+                    "type": "string"
+                },
+                "SecretKey": {
+                    "type": "string"
+                },
+                "UpdateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Url": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Result": {
+            "title": "Result",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "data": {
+                    "$ref": "#/definitions/22341.0xc00058ed80.false"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.User": {
+            "title": "User",
+            "type": "object",
+            "properties": {
+                "AccountAddress": {
+                    "type": "string"
+                },
+                "CaptchaMode": {
+                    "type": "string"
+                },
+                "CreateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "LoginName": {
+                    "type": "string"
+                },
+                "Mobile": {
+                    "type": "string"
+                },
+                "NickName": {
+                    "type": "string"
+                },
+                "Password": {
+                    "type": "string"
+                },
+                "RegisterType": {
+                    "type": "string"
+                },
+                "RoleId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Salt": {
+                    "type": "string"
+                },
+                "UpdateTime": {
+                    "type": "string",
+                    "format": "datetime"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "hosts",
+            "description": "Hosts object api list\n"
+        },
+        {
+            "name": "clusters",
+            "description": "Cluster object api list\n"
+        },
+        {
+            "name": "rancherservers",
+            "description": "RancherServers object api list\n"
+        },
+        {
+            "name": "users",
+            "description": "Users object api list\n"
+        },
+        {
+            "name": "promotions",
+            "description": "Promotion object api list\n"
+        },
+        {
+            "name": "ordermaster",
+            "description": "Cluster object api list\n"
+        },
+        {
+            "name": "orderrenewal",
+            "description": "Cluster object api list\n"
+        },
+        {
+            "name": "orderdetail",
+            "description": "Cluster object api list\n"
+        }
+    ]
+}

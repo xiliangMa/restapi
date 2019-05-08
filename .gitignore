@@ -9,7 +9,5 @@
 restapi
 logs*
 
-#swagger
-swagger*
 
 lastupdate.tmp
