@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restapi
+spec:
+  replicas: 2
+  containers:
+    - name: go-restapi
+      imgae: xiliangma/restapi:latest
+      imagePullPolicy: Always
+    ports:
+      - name: dev
+        hostPort: 8080
+        containerPort: 8080
+      - name: prod
+        hostPort: 8088
+        containerPort: 8080
+      - name: https
+        hostPort: 443
+        containerPort: 443
+    resources:
+     limits:
+       cpu: 1
+       memory: 1024Mi
