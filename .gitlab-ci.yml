@@ -34,6 +34,7 @@ buid-docker-image:
   dependencies:
     - go-build
   script:
+    #change your docker hub user name and pwd
     - docker login -u user -p pwd
     - docker build -t $image:$tag .
     - docker push $image:$tag

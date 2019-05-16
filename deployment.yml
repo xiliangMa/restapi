@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: restapi-deployment
-  labels:
-    app: restapi
 spec:
   replicas: 1
   selector:
