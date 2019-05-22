@@ -1,27 +1,22 @@
 stages:
-  - name: Build
-    steps:
-      - runScriptConfig:
-          image: golang:1.11
-          shellScript: |-
-            mkdir -p /go/src/github.com/xiliangMa
-            ln -s `pwd` /go/src/github.com/xiliangMa/restapi
-            cd /go/src/github.com/xiliangMa/restapi
-            go build -o bin/restapi
-    artifacts:
-      paths:
-        - bin
-        - conf
-        - swagger
-
-  - name: Publish
-    steps:
-      - publishImageConfig:
-          dockerfilePath: ./Dockerfile
-          buildContext: .
-          tag: restapi:${CICD_EXECUTION_SEQUENCE}
-
-  - name: Deploy
-    steps:
-      - applyYamlConfig:
-          path: ./deployment.yaml
+- name: Build
+  steps:
+  - runScriptConfig:
+      image: golang:1.11
+      shellScript: |-
+        mkdir -p /go/src/github.com/xiliangMa
+        ln -s `pwd` /go/src/github.com/xiliangMa/restapi
+        cd /go/src/github.com/xiliangMa/restapi
+        go build -o bin/restapi
+- name: Publish
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: maxl/restapi:${CICD_EXECUTION_SEQUENCE}
+      pushRemote: true
+      registry: http://47.106.75.136
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
