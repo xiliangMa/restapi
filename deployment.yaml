@@ -12,9 +12,11 @@ spec:
       labels:
         app: restapi
     spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
       containers:
       - name: restapi
-        image: xiliangma/restapi:latest
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         imagePullPolicy: Always
         ports:
         - name: dev
