@@ -15,9 +15,6 @@ stages:
       buildContext: .
       tag: restapi:${CICD_EXECUTION_SEQUENCE}
       registry: 114.115.180.117
-    env:
-     DOCKER_HOST: tcp://dind.default:2375
-     PLUGIN_DAEMON_OFF: true
 - name: Deploy
   steps:
   - applyYamlConfig:
