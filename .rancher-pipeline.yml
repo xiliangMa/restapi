@@ -15,7 +15,7 @@ stages:
       buildContext: .
       tag: maxl/restapi:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
-      registry: 114.115.180.117
+      registry: 47.106.75.136
 - name: Deploy
   steps:
   - applyYamlConfig:
