@@ -15,7 +15,7 @@ spec:
       containers:
       - name: restapi
         image: xiliangma/restapi:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - name: dev
           hostPort: 18080
@@ -39,4 +39,5 @@ spec:
           periodSeconds: 30
           timeoutSeconds: 3
           failureThreshold: 3
+
 
