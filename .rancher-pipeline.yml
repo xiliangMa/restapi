@@ -13,9 +13,8 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: maxl/restapi:${CICD_EXECUTION_SEQUENCE}
+      tag: restapi:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
-      registry: 47.106.75.136
 - name: Deploy
   steps:
   - applyYamlConfig:
