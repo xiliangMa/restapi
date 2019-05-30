@@ -1,4 +1,4 @@
-FROM golang:1.11
+FROM 47.244.62.249:9090/maxl/golang:1.11
 
 MAINTAINER xiliangMa "xiliangMa@outlook.com"
 
