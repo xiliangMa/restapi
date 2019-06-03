@@ -14,7 +14,8 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: restapi:${CICD_EXECUTION_SEQUENCE}
-      registry: 47.106.75.136
+      pushRemote: true
+      registry: index.docker.io
 - name: Deploy
   steps:
   - applyYamlConfig:
