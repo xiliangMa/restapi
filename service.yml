@@ -2,16 +2,22 @@ apiVersion: v1
 kind: Service
 metadata:
   name: restpi-service
+  labels:
+    app: restapi
 spec:
   selector:
     app: restapi
   ports:
   - name: dev
-    port: 18080
-    targetPort: 18080
+    port: 8080
+    nodePort: 30001
+    targetPort: dev
   - name: prod
-    port: 18088
-    targetPort: 18088
+    port: 8088
+    nodePort: 30002
+    targetPort: prod
   - name: https
-    port: 1443
-    targetPort: 1443
+    port: 443
+    nodePort: 30003
+    targetPort: https
+  type: NodePort

@@ -18,23 +18,23 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - name: dev
-          hostPort: 18080
           containerPort: 8080
         - name: prod
-          hostPort: 18088
           containerPort: 8088
         - name: https
-          hostPort: 1443
           containerPort: 443
         resources:
           limits:
-            cpu: 1
+            cpu: 1000m
             memory: 1024Mi
+          requests:
+            cpu: 300m
+            memory: 256Mi
         livenessProbe:
           httpGet:
             path: /swagger
             port: 8080
-            scheme: HTTP
+            scheme: HTTP 
           initialDelaySeconds: 60
           periodSeconds: 30
           timeoutSeconds: 3
