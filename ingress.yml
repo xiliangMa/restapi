@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: restpi-ingress
+spec:
+  rules:
+    http:
+      paths:
+      - backend:
+          serviceName: restpi-service
+          servicePort: 8080
+        path: /swagger
