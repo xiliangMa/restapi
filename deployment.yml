@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: restapi-deployment
+  name: restapi
 spec:
   replicas: 1
   selector:
@@ -11,6 +11,8 @@ spec:
     metadata:
       labels:
         app: restapi
+        tier: backend
+        track: stable
     spec:
       containers:
       - name: restapi

@@ -1,12 +1,21 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: restpi-ingress
+  name: restapi
+  annotations:
+    kubernetes.io/ingres.class: "nginx"
 spec:
   rules:
+  - host: restapi.test.com # 内网环境的测试，可以根据 云环境、自定义环境配置
     http:
       paths:
-      - backend:
-          serviceName: restpi-service
+      - path: /swagger
+        backend:
+          serviceName: restapi
           servicePort: 8080
-        path: /swagger
+# tls 为自签名证书 
+  tls:
+  - hosts: 
+    - restapi.test.com
+    secretName: rest-tls
+
