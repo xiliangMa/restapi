@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: restapi-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  volumeMode: Filesystem
+  storageClassName: slow
+  capacity:
+    storage: 20Gi
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /data/k8svolume
+    server: 114.115.180.117
