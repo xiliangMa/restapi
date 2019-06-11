@@ -15,7 +15,28 @@ spec:
         track: stable
     spec:
       containers:
-      - name: restapi
+      - env:
+        - name: ALLOW_EMPTY_PASSWORD
+          value: "yes"
+        - name: MARIADB_HOST
+          value: restapi-mariadb
+        - name: MARIADB_PORT_NUMBER
+          value: "3306"
+        - name: MARIADB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: pwd
+              name: restapi-secret
+        - name: MARIADB_USER
+          value: restapi
+        - name: MARIADB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: pwd
+              name: restapi-secret
+        - name: MARIADB_DATABASE
+          value: restapi 
+        name: restapi
         image: xiliangma/restapi:latest
         imagePullPolicy: IfNotPresent
         ports:
@@ -42,7 +63,7 @@ spec:
           timeoutSeconds: 3
           failureThreshold: 3
         volumeMounts:
-          mountPath: /data/restapi
+        - mountPath: /data/restapi
           name: restapi-data
       volumes:
       - name: restapi-data
