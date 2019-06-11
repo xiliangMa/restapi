@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: restapi-mariadb
+spec:
+  replicas: 1
+  selector: # 必要参数
+    matchLabels:
+      app: restapi-service
+  serviceName: "restapi" #必要参数
+  template:
+    metadata:
+      labels:
+        app: restapi-service # 此处对应 service的labels
+    spec:
+      containers:
+      - env:
+        - name: MARIADB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: pwd
+              name: restapi-secret
+        - name: MARIADB_USER
+          value: restapi
+        - name: MARIADB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: pwd
+              name: restapi-secret
+        - name: MARIADB_DATABASE
+          value: restapi 
+        name: mariadb
+        image: docker.io/bitnami/mariadb:10.1.35-debian-9
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3306
+          name: mysql
+          protocol: TCP
+        resources: 
+          limits:
+            cpu: 1000m
+            memory: 1024Mi
+          requests:
+            cpu: 300m
+            memory: 256Mi
+        volumeMounts:
+        - name: restapi-data
+          mountPath: /data/rstapi/mysql
+      volumes:
+      - name: restapi-data
+        emptyDir: {}
