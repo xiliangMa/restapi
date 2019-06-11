@@ -9,7 +9,7 @@ spec:
   - host: restapi.test.com # 内网环境的测试，可以根据 云环境、自定义环境配置
     http:
       paths:
-      - path: /swagger
+      - path: /
         backend:
           serviceName: restapi
           servicePort: 8080
