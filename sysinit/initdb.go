@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/astaxie/beego"
 	_ "github.com/xiliangMa/restapi/models"
+	"os"
 
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
@@ -20,13 +21,16 @@ func initDB() {
 	dbName := beego.AppConfig.String(dbType + "::db_name")
 
 	//数据库连接用户名
-	dbUser := beego.AppConfig.String(dbType + "::db_user")
+	//dbUser := beego.AppConfig.String(dbType + "::db_user")
+	dbUser := os.Getenv("MARIADB_USER")
 
 	//数据库连接用户名
-	dbPwd := beego.AppConfig.String(dbType + "::db_pwd")
+	//dbPwd := beego.AppConfig.String(dbType + "::db_pwd")
+	dbPwd := os.Getenv("MARIADB_PASSWORD")
 
 	//数据库IP（域名）
-	dbHost := beego.AppConfig.String(dbType + "::db_host")
+	//dbHost := beego.AppConfig.String(dbType + "::db_host")
+	dbHost := os.Getenv("MARIADB_HOST")
 
 	//数据库端口
 	//dbPort := beego.AppConfig.String(dbType + "::db_port")

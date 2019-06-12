@@ -37,7 +37,7 @@ spec:
         - name: MARIADB_DATABASE
           value: restapi 
         name: restapi
-        image: xiliangma/restapi:latest
+        image: xiliangma/restapi:cd656dbd4cc7c7a487e614531f4689ac274e9e58
         imagePullPolicy: IfNotPresent
         ports:
         - name: dev
@@ -53,15 +53,15 @@ spec:
           requests:
             cpu: 300m
             memory: 256Mi
-        livenessProbe:
-          httpGet:
-            path: /swagger
-            port: 8080
-            scheme: HTTP 
-          initialDelaySeconds: 60
-          periodSeconds: 30
-          timeoutSeconds: 3
-          failureThreshold: 3
+        # livenessProbe:
+        #   httpGet:
+        #     path: /swagger
+        #     port: 8080
+        #     scheme: HTTP
+        #   initialDelaySeconds: 60
+        #   periodSeconds: 30
+        #   timeoutSeconds: 3
+        #   failureThreshold: 3
         volumeMounts:
         - mountPath: /data/restapi
           name: restapi-data

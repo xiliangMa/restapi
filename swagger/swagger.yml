@@ -712,7 +712,7 @@ paths:
           schema:
             $ref: '#/definitions/models.Result'
 definitions:
-  22341.0xc00058ed80.false:
+  22341.0xc0005dad80.false:
     title: "false"
     type: object
   models.Cluster:
@@ -1131,7 +1131,7 @@ definitions:
         type: integer
         format: int64
       data:
-        $ref: '#/definitions/22341.0xc00058ed80.false'
+        $ref: '#/definitions/22341.0xc0005dad80.false'
       message:
         type: string
   models.User:

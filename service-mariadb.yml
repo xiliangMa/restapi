@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: restapi
+  name: restapi-mariadb
   labels:
-    app: restapi
+    app: restapi-service
 spec:
   selector:
     app: restapi

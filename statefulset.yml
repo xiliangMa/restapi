@@ -7,7 +7,7 @@ spec:
   selector: # 必要参数
     matchLabels:
       app: restapi-service
-  serviceName: "restapi" #必要参数
+  serviceName: "restapi-mariadb" #必要参数
   template:
     metadata:
       labels:

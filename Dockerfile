@@ -6,6 +6,10 @@ EXPOSE 8080
 EXPOSE 8088
 EXPOSE 10443
 
+ENV MARIADB_HOST localhost
+ENV MARIADB_USER restapi
+ENV MARIADB_PASSWORD restapi
+
 WORKDIR /usr/share/restapi
 RUN mkdir -p /usr/share/restapi/conf && \
     mkdir -p /usr/share/restapi/swagger
