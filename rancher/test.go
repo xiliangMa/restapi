@@ -11,4 +11,26 @@ func gethostip(node *corev1.Node) {
 			fmt.Println("==========", address.Address)
 		}
 	}
+
 }
+
+
+func main() {
+
+	var a int = 1
+
+	var b int = 2
+
+	var i interface{} = &a
+
+	sum := i.(*int).Add(b)
+
+	fmt.Println(sum)
+}
+
+
+func (a *int) Add(test int){
+
+}
+
+

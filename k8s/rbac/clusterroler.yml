@@ -1,0 +1,33 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: cluster-readers
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+
+# kubectl create clusterrole cluster-readers --verb=get,list,watch --resource=pods
+
+---
+piVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: null
+  name: cluster-roler-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-readers
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: xiliangMa
+
+# kubectl create clusterrolebinding cluster-roler-binding --clusterrole=cluster-readers --user=xiliangMa

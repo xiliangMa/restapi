@@ -37,7 +37,7 @@ spec:
         - name: MARIADB_DATABASE
           value: restapi 
         name: restapi
-        image: xiliangma/restapi:cd656dbd4cc7c7a487e614531f4689ac274e9e58
+        image: xiliangma/restapi:latest
         imagePullPolicy: IfNotPresent
         ports:
         - name: dev

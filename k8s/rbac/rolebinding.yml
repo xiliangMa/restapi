@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  name: rolebinding-pods-reader
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pods-reader
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: xiliangMa
+
+
+
+# kubectl create rolebinding  rolebinding-pods-reader --role=pods-reader --user=xiliangMa

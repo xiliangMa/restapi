@@ -10,6 +10,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+
 func initDB() {
 
 	dbType := beego.AppConfig.String("db::db_type")
@@ -52,3 +53,4 @@ func initDB() {
 	//auto create db
 	orm.RunSyncdb("default", force, isDev)
 }
+
