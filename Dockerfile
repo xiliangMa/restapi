@@ -24,4 +24,4 @@ RUN chmod +x /usr/share/restapi/entrypoint.sh
 
 
 # RUN ln -s /usr/share/restapi/restapi /usr/local/bin/restapi
-ENTRYPOINT ["entrypoint.sh" ]
+ENTRYPOINT ["sh", "/usr/share/restapi/entrypoint.sh" ]

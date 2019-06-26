@@ -6,12 +6,12 @@ spec:
   replicas: 1
   selector: # 必要参数
     matchLabels:
-      app: restapi-service
-  serviceName: "restapi-mariadb" #必要参数
+      app: restapi-mariadb
+  serviceName: restapi-mariadb #必要参数
   template:
     metadata:
       labels:
-        app: restapi-service # 此处对应 service的labels
+        app: restapi-mariadb # 此处对应 service的labels
     spec:
       containers:
       - env:

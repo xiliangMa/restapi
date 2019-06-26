@@ -3,17 +3,11 @@ kind: Service
 metadata:
   name: restapi-mariadb
   labels:
-    app: restapi-service
+    app: restapi-mariadb
 spec:
   selector:
-    app: restapi
+    app: restapi-mariadb
   ports:
   - name: dev
-    port: 8080
-    targetPort: dev
-  - name: prod
-    port: 8088
-    targetPort: prod
-  - name: https
-    port: 443
-    targetPort: https
+    port: 3306
+    targetPort: mysql

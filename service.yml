@@ -10,6 +10,7 @@ spec:
   ports:
   - name: dev
     port: 8080
+    nodePort:30006
     targetPort: dev
   - name: prod
     port: 8088

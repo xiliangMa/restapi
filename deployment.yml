@@ -11,8 +11,6 @@ spec:
     metadata:
       labels:
         app: restapi
-        tier: backend
-        track: stable
     spec:
       containers:
       - env:
@@ -37,8 +35,8 @@ spec:
         - name: MARIADB_DATABASE
           value: restapi 
         name: restapi
-        image: xiliangma/restapi:test
-        imagePullPolicy: IfNotPresent
+        image: xiliangma/restapi:statefulset-test
+        imagePullPolicy: Always
         ports:
         - name: dev
           containerPort: 8080
