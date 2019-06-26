@@ -3,10 +3,12 @@ variables:
   image: xiliangma/restapi
   tag: $CI_COMMIT_SHA
   gopath: /go/src/github.com/xiliangMa
+  deployFile: deploy-k8s.yml
 
 stages:
   - build
   - publish
+  - deploy
 
 go-build:
   stage: build
@@ -39,3 +41,10 @@ buid-docker-image:
     - docker build -t $image:$tag .
     - docker push $image:$tag
     - echo "build success $image:$tag"
+
+deploy-k8s:
+  stage: deploy
+  image: $image:$tag
+  script:
+    - cat $deployFile
+    - kubectl apply -f $deployFile

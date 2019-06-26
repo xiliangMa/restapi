@@ -1,0 +1,174 @@
+# deploy restapi by deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restapi
+  template:
+    metadata:
+      labels:
+        app: restapi
+    spec:
+      containers:
+      - env:
+        - name: ALLOW_EMPTY_PASSWORD
+          value: "yes"
+        - name: MARIADB_HOST
+          value: restapi-mariadb
+        - name: MARIADB_PORT_NUMBER
+          value: "3306"
+        - name: MARIADB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: pwd
+              name: restapi-secret
+        - name: MARIADB_USER
+          value: restapi
+        - name: MARIADB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: pwd
+              name: restapi-secret
+        - name: MARIADB_DATABASE
+          value: restapi
+        name: restapi
+        image: xiliangma/restapi:statefulset-test
+        imagePullPolicy: Always
+        ports:
+          - name: dev
+            containerPort: 8080
+          - name: prod
+            containerPort: 8088
+          - name: https
+            containerPort: 443
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1024Mi
+          requests:
+            cpu: 300m
+            memory: 256Mi
+          livenessProbe:
+            httpGet:
+              path: /swagger
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 3
+            failureThreshold: 3
+        volumeMounts:
+          - mountPath: /data/restapi
+            name: restapi-data
+      volumes:
+        - name: restapi-data
+          emptyDir: {}
+
+# restapi-mariadb by StatefulSet
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: restapi-mariadb
+spec:
+  replicas: 1
+  selector: # 必要参数
+    matchLabels:
+      app: restapi-mariadb
+  serviceName: restapi-mariadb #必要参数
+  template:
+    metadata:
+      labels:
+        app: restapi-mariadb # 此处对应 service的labels
+    spec:
+      containers:
+        - env:
+          - name: MARIADB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: pwd
+                name: restapi-secret
+          - name: MARIADB_USER
+            value: restapi
+          - name: MARIADB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: pwd
+                name: restapi-secret
+          - name: MARIADB_DATABASE
+            value: restapi
+          name: mariadb
+          image: docker.io/bitnami/mariadb:10.1.35-debian-9
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3306
+              name: mysql
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 1024Mi
+            requests:
+              cpu: 300m
+              memory: 256Mi
+          volumeMounts:
+            - name: restapi-data
+              mountPath: /data/rstapi/mysql
+      volumes:
+        - name: restapi-data
+          emptyDir: {}
+
+# restapi service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: restapi
+  labels:
+    app: restapi
+spec:
+  selector:
+    app: restapi
+  ports:
+  - name: dev
+    port: 8080
+    nodePort:30006
+    targetPort: dev
+  - name: prod
+    port: 8088
+    targetPort: prod
+  - name: https
+    port: 443
+    targetPort: https
+
+# restapi-mariadb service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: restapi-mariadb
+  labels:
+    app: restapi-mariadb
+spec:
+  selector:
+    app: restapi-mariadb
+  ports:
+  - name: dev
+    port: 3306
+    targetPort: mysql
+
+# restapi-mariadb secret
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: restapi-secret
+type:
+data:
+  user: cmVzdGFwaQ==
+  pwd: UEBzc3cwcmQ=
+
