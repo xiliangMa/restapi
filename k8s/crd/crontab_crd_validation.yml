@@ -1,0 +1,36 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  # 称必须与下面的spec字段匹配，格式为: <plural>.<group>
+  name: crontabs.crd.test.com
+spec:
+  # 用于REST API的组名称: /apis/<group>/<version>
+  group: crd.test.com
+  versions:
+  - name: v1
+    # 每个版本都可以通过服务标志启用/禁用。
+    served: true
+    # 必须将一个且只有一个版本标记为存储版本。
+    storage: true
+  scope: Namespaced # 指定crd资源作用范围在命名空间或集群
+  names:
+    # URL中使用的复数名称: /apis/<group>/<version>/<plural>
+    plural: crontabs
+    # 在CLI(shell界面输入的参数)上用作别名并用于显示的单数名称
+    singular: crontab
+    kind: CronTab
+    # 短名称允许短字符串匹配CLI上的资源，意识就是能通过kubectl 在查看资源的时候使用该资源的简名称来获取。
+    shortNames:
+    - ct
+  validation:
+    openAPIV3Schema:
+      properties:
+        spec:
+          properties:
+            cronSpec: #必须是字符串、符合正则规则
+              type: string
+              pattern: '^(\d+|\*)(/\d+)?(\s+(\d+|\*)(/\d+)?){4}$'
+            replicas: #设置副本数的限制
+              type: integer
+              minimum: 1
+              maximum: 10

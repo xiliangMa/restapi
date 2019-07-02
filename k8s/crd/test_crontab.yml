@@ -1,0 +1,8 @@
+apiVersion: crd.test.com/v1
+kind: CronTab
+metadata:
+  name: my-test-crontab
+spec:
+  cronSpec: "* * * * */10"
+  image: my-test-image
+  replicas: 2
