@@ -1,7 +1,17 @@
 ## run api
 
-    bee run -gendoc=true -downdoc=true
-
+    set env:
+        MARIADB_DATABASE=uranus_local;MARIADB_USER=root;MARIADB_PASSWORD=abc123123;MARIADB_HOST=127.0.0.1
+    
+    go build:
+        go build -o restapi
+        
+    run：
+        bee run -gendoc=true -downdoc=true
+        
+        or
+      
+        ./restapi
 
 ## build image
 
