@@ -9,8 +9,7 @@
     run：
         bee run -gendoc=true -downdoc=true
         
-        or
-      
+    run by restapi：
         ./restapi
 
 ## build image
