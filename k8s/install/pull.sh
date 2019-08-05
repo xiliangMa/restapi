@@ -4,3 +4,4 @@ for imageName in ${images[@]} ; do
 docker pull xiliangma/$imageName
 docker tag  xiliangma/$imageName k8s.gcr.io/$imageName
 docker rmi  xiliangma/$imageName
+done
