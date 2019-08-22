@@ -52,15 +52,15 @@ spec:
           requests:
             cpu: 300m
             memory: 256Mi
-          livenessProbe:
-            httpGet:
-              path: /swagger
-              port: 8080
-              scheme: HTTP
-            initialDelaySeconds: 60
-            periodSeconds: 30
-            timeoutSeconds: 3
-            failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /swagger
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 3
+          failureThreshold: 3
         volumeMounts:
           - mountPath: /data/restapi
             name: restapi-data
@@ -136,7 +136,6 @@ spec:
   ports:
   - name: dev
     port: 8080
-    nodePort:30006
     targetPort: dev
   - name: prod
     port: 8088
